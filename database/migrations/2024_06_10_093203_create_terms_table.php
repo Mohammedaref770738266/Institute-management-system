@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
+            $table->date('starting_date')->unique();
+            $table->date('finishing_date')->unique();
             $table->timestamps();
         });
     }
