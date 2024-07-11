@@ -22,8 +22,8 @@ class UpdateTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_ar'=>'required|unique:teachers,full_name_ar',
-            'name_en'=>'required|unique:teachers,full_name_en',
+            'name_ar'=>'required|unique:teachers,full_name_ar,'.$this->teacher->id,
+            'name_en'=>'required|unique:teachers,full_name_en,'.$this->teacher->id,
             'address'=>'required',
             'phone'=>'numeric|required',
             'gender'=>'required',
@@ -31,7 +31,6 @@ class UpdateTeacherRequest extends FormRequest
             'birth_d'=>'required',
             'qualification'=>'required',
             'salary'=>'required',
-            'status'=>'required',
         ];
     }
 }

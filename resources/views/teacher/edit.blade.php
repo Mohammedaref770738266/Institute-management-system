@@ -35,6 +35,14 @@
                         <label for="birth_d">Birth Day:</label>
                         <input type="date" class="form-control @error('birth_d') is-invalid @enderror" id="birth_d" value="{{old('birth_d',$teacher->birth_day)}}" name="birth_d" >
                     </div>
+                    <div class="form-group col-lg-3 col-md-4">
+                        <label for="qualification">Qualification:</label>
+                        <input type="text" class="form-control @error('qualification') is-invalid @enderror" id="qualification" value="{{old('qualification',$teacher->qualification)}}" name="qualification" >
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4">
+                        <label for="salary">Salary:</label>
+                        <input type="text" class="form-control @error('salary') is-invalid @enderror" id="salary" value="{{old('salary',$teacher->salary)}}" name="salary" >
+                    </div>
                     <div class="col-lg-3 col-md-4">
                         <label for="gender">Gender:</label>
                         <div class="form-check">
@@ -48,18 +56,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-lg-3 col-md-4">
-                        <label for="parent_name">Full Name:</label>
-                        <input type="text" class="form-control @error('parent_name') is-invalid @enderror" id="parent_name" value="{{old('parent_name',$teacher->parent_name)}}" name="parent_name" >
-                    </div>
-
-                    <div class="form-group col-lg-3 col-md-4">
-                        <label for="relative">Relative:</label>
-                        <input type="text" class="form-control @error('relative') is-invalid @enderror" id="relative" value="{{old('relative',$teacher->relative)}}" name="relative" >
-                    </div>
-                    <div class="form-group col-lg-3 col-md-4">
-                        <label for="parent_phone">Phone Number:</label>
-                        <input type="text" class="form-control @error('parent_phone') is-invalid @enderror" id="parent_phone" value="{{old('parent_phone',$teacher->parent_phone)}}" name="parent_phone" >
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" @if($teacher->status)checked @endif name="status">Status
+                        </label>
                     </div>
                 </div>
                 <br>

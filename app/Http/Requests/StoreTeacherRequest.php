@@ -31,7 +31,6 @@ class StoreTeacherRequest extends FormRequest
             'birth_d'=>'required',
             'qualification'=>'required',
             'salary'=>'required|numeric',
-            'status'=>'required',
         ];
     }
 }

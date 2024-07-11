@@ -33,7 +33,7 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
 //        return dd($request->all());
-        Student::create([
+        Teacher::create([
             'full_name_ar'=>$request->name_ar,
             'full_name_en'=>$request->name_en,
             'address'=>$request->address,
@@ -62,7 +62,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return view('teacher.edit');
+        return view('teacher.edit',compact('teacher'));
     }
 
     /**
@@ -78,9 +78,9 @@ class TeacherController extends Controller
             'gender'=>$request->gender,
             'birth_place'=>$request->birth_p,
             'birth_day'=>$request->birth_d,
-            'status'=>$request->status,
-            'Qualification' => $request->Qualification,
+            'qualification' => $request->qualification,
             'salary'=>$request->salary,
+            'status'=>isset($request->status),
         ]);
         toastr()->success("Updated successfully");
         return redirect(route('teachers.index'));
