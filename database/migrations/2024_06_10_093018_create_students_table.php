@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('parent_name');
             $table->string('relative');
             $table->string('parent_phone');
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

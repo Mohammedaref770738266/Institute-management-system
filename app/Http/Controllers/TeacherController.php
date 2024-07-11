@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
@@ -13,7 +14,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        $teachers = Teacher::paginate(25);
+        return view('teacher.index',compact('teachers'));
     }
 
     /**
@@ -21,7 +23,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('teacher.create');
+
     }
 
     /**
@@ -29,7 +32,21 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-        //
+//        return dd($request->all());
+        Student::create([
+            'full_name_ar'=>$request->name_ar,
+            'full_name_en'=>$request->name_en,
+            'address'=>$request->address,
+            'phone_number'=>$request->phone,
+            'birth_place'=>$request->birth_p,
+            'birth_day'=>$request->birth_d,
+            'qualification' => $request->qualification,
+            'salary'=>$request->salary,
+            'gender'=>$request->gender,
+            'status'=>isset($request->status),
+        ]);
+        toastr()->success("Added successfully");
+        return redirect(route('teachers.index'));
     }
 
     /**
@@ -45,7 +62,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return view('teacher.edit');
     }
 
     /**
@@ -53,7 +70,20 @@ class TeacherController extends Controller
      */
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
-        //
+        $teacher->update([
+            'full_name_ar'=>$request->name_ar,
+            'full_name_en'=>$request->name_en,
+            'address'=>$request->address,
+            'phone_number'=>$request->phone,
+            'gender'=>$request->gender,
+            'birth_place'=>$request->birth_p,
+            'birth_day'=>$request->birth_d,
+            'status'=>$request->status,
+            'Qualification' => $request->Qualification,
+            'salary'=>$request->salary,
+        ]);
+        toastr()->success("Updated successfully");
+        return redirect(route('teachers.index'));
     }
 
     /**
@@ -61,6 +91,8 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+        toastr()->success("Deleted Successfully");
+        return redirect(route('teachers.index'));
     }
 }

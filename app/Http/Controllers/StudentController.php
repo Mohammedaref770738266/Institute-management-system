@@ -41,8 +41,8 @@ class StudentController extends Controller
             'parent_name'=>$request->parent_name,
             'relative' => $request->relative,
             'parent_phone'=>$request->parent_phone,
-            'image'=>'fofgdkp'
         ]);
+        toastr()->success("Added successfully");
         return redirect(route('students.index'));
     }
 
@@ -79,7 +79,6 @@ class StudentController extends Controller
             'parent_name'=>$request->parent_name,
             'relative' => $request->relative,
             'parent_phone'=>$request->parent_phone,
-            'image'=>'fofgdkp'
         ]);
         toastr()->success("Updated successfully");
         return redirect(route('students.index'));

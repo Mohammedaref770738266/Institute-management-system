@@ -2,7 +2,7 @@
 @extends('layout')
 @section('content')
 <div class="container-fluid">
-    <h2 class = "ml-1">Student List</h2>
+    <h2 class = "ml-1">Students List</h2>
     <a href="{{route('students.create')}}"  class="btn btn-primary mb-3 float-right">create</a>
 
     <table class="ml-1 table table-striped">

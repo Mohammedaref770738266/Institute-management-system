@@ -32,7 +32,6 @@ class StoreStudentRequest extends FormRequest
             'parent_name'=>'required',
             'relative'=>'required',
             'parent_phone'=>'required|numeric',
-            'photo'=>'nullable'
         ];
     }
 }

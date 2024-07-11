@@ -35,13 +35,6 @@
                         <label for="birth_d">Birth Day:</label>
                         <input type="date" class="form-control @error('birth_d') is-invalid @enderror" id="birth_d" value="{{old('birth_d',$student->birth_day)}}" name="birth_d" >
                     </div>
-
-
-                    <div class="form-group custom-file col-lg-3 col-md-4" >
-                        <label for="">Photo:</label>
-                        <label class="custom-file-label mr-2 ml-2" style="margin-top: 32px"  for="photo"></label>
-                        <input type="file" class="form-control custom-file-input @error('photo') is-invalid @enderror" id="photo" value="{{old('photo')}}" name="photo" >
-                    </div>
                     <div class="col-lg-3 col-md-4">
                         <label for="gender">Gender:</label>
                         <div class="form-check">
@@ -56,10 +49,8 @@
                         </div>
                     </div>
                 </div>
-
                 <hr style="color: #000000">
                 <h2>Guardian Information</h2>
-
                 <div class="row">
                     <div class="form-group col-lg-3 col-md-4">
                         <label for="parent_name">Full Name:</label>
