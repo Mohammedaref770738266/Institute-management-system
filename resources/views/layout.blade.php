@@ -68,6 +68,8 @@
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item" href="{{route('students.index')}}">Student</a>
                     <a class="collapse-item" href="{{route('teachers.index')}}">Teacher</a>
+                    <a class="collapse-item" href="{{route('departments.index')}}">Department</a>
+                    <a class="collapse-item" href="{{route('books.index')}}">Book</a>
                 </div>
             </div>
         </li>

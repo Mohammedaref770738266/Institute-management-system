@@ -13,7 +13,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('books.index');
+        $books = Book::paginate(25);
+        return view('book.index',compact('books'));
     }
 
     /**
@@ -21,7 +22,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('book.create');
     }
 
     /**
@@ -29,7 +30,14 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        Book::create([
+            'name'=>$request->name,
+            'price'=>$request->price,
+            'description'=>$request->description,
+            'type'=>$request->type,
+        ]);
+        toastr()->success('Added Successfully');
+        return redirect(route('books.index'));
     }
 
     /**
@@ -45,7 +53,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('book.edit',compact('book'));
     }
 
     /**
@@ -53,7 +61,14 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $book->update([
+            'name'=>$request->name,
+            'price'=>$request->price,
+            'description'=>$request->description,
+            'type'=>$request->type,
+        ]);
+        toastr()->success('Added Successfully');
+        return redirect(route('books.index'));
     }
 
     /**
@@ -61,6 +76,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        toastr()->success("Deleted Successfully");
+        return redirect(route('books.index'));
     }
 }

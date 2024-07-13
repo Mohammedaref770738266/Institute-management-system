@@ -9,41 +9,73 @@
                 <div class="row">
                     <div class="form-group col-lg-3 col-md-4">
                         <label for="name_ar">Arabic Name:</label>
-                        <input type="text" class="form-control @error('name_ar') is-invalid @enderror " id="name_ar" value="{{old('name_ar')}}" name="name_ar" >
+                        <input type="text"
+                               class="form-control @error('name_ar') is-invalid @enderror"
+                               id="name_ar"
+                               value="{{old('name_ar')}}"
+                               name="name_ar" >
                     </div>
-    {{--                @error('name_ar')--}}
-    {{--                    <div class="alert alert-danger">{{ $message }}</div>--}}
-    {{--                @enderror()--}}
+                    @error('name_ar')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror()
                     <div class="form-group col-lg-3 col-md-4">
                         <label for="name_en">English Name:</label>
-                        <input type="text" class="form-control @error('name_en') is-invalid @enderror " id="name_en" value="{{old('name_en')}}" name="name_en" >
+                        <input type="text"
+                               class="form-control @error('name_en') is-invalid @enderror"
+                               id="name_en"
+                               value="{{old('name_en')}}"
+                               name="name_en" >
                     </div>
                     <div class="form-group col-lg-3 col-md-4">
                         <label for="address">Address:</label>
-                        <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" value="{{old('address')}}" name="address" >
+                        <input type="text"
+                               class="form-control @error('address') is-invalid @enderror"
+                               id="address"
+                               value="{{old('address')}}"
+                               name="address" >
                     </div>
                     <div class="form-group col-lg-3 col-md-4">
                         <label for="phone">Phone Number:</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{old('phone')}}" name="phone" >
+                        <input type="text"
+                               class="form-control @error('phone') is-invalid @enderror"
+                               id="phone"
+                               value="{{old('phone')}}"
+                               name="phone" >
                     </div>
                     <div class="form-group col-lg-3 col-md-4">
                         <label for="birth_p">Birth Place:</label>
-                        <input type="text" class="form-control @error('birth_p') is-invalid @enderror" id="birth_p" value="{{old('birth_p')}}" name="birth_p" >
+                        <input type="text"
+                               class="form-control @error('birth_p') is-invalid @enderror"
+                               id="birth_p"
+                               value="{{old('birth_p')}}"
+                               name="birth_p" >
                     </div>
                     <div class="form-group col-lg-3 col-md-4">
                         <label for="birth_d">Birth Day:</label>
-                        <input type="date" class="form-control @error('birth_d') is-invalid @enderror" id="birth_d" value="{{old('birth_d')}}" name="birth_d" >
+                        <input type="date"
+                               class="form-control @error('birth_d') is-invalid @enderror"
+                               id="birth_d"
+                               value="{{old('birth_d')}}"
+                               name="birth_d" >
                     </div>
                     <div class="col-lg-3 col-md-4">
                         <label for="gender">Gender:</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" @checked(old('gender')=='male'||old('gender')==null ) value="male" name="gender">Male
+                                <input type="radio"
+                                       class="form-check-input"
+                                       @checked(old('gender')=='male'||old('gender')==null )
+                                       value="male"
+                                       name="gender">Male
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" @checked(old('gender')=='female') value="female" name="gender">Female
+                                <input type="radio"
+                                       class="form-check-input"
+                                       @checked(old('gender')=='female')
+                                       value="female"
+                                       name="gender">Female
                             </label>
                         </div>
                     </div>
@@ -53,15 +85,27 @@
                     <div class="row">
                         <div class="form-group col-lg-3 col-md-4">
                             <label for="parent_name">Full Name:</label>
-                            <input type="text" class="form-control @error('parent_name') is-invalid @enderror" id="parent_name" value="{{old('parent_name')}}" name="parent_name" >
+                            <input type="text"
+                                   class="form-control @error('parent_name') is-invalid @enderror"
+                                   id="parent_name"
+                                   value="{{old('parent_name')}}"
+                                   name="parent_name" >
                         </div>
                         <div class="form-group col-lg-3 col-md-4">
                             <label for="relative">Relative:</label>
-                            <input type="text" class="form-control @error('relative') is-invalid @enderror" id="relative" value="{{old('relative')}}" name="relative" >
+                            <input type="text"
+                                   class="form-control @error('relative') is-invalid @enderror"
+                                   id="relative"
+                                   value="{{old('relative')}}"
+                                   name="relative" >
                         </div>
                         <div class="form-group col-lg-3 col-md-4">
                             <label for="parent_phone">Phone Number:</label>
-                            <input type="text" class="form-control @error('parent_phone') is-invalid @enderror" id="parent_phone" value="{{old('parent_phone')}}" name="parent_phone" >
+                            <input type="text"
+                                   class="form-control @error('parent_phone') is-invalid @enderror"
+                                   id="parent_phone"
+                                   value="{{old('parent_phone')}}"
+                                   name="parent_phone" >
                         </div>
                     </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

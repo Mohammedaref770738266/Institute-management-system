@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->double('price')->nullable();
+            $table->enum('type',['book','story']);
             $table->text('description');
+            $table->double('price')->nullable();
+
             $table->timestamps();
         });
     }

@@ -13,7 +13,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments= Department::paginate(25);
+        return view('department.index',compact('departments'));
+
     }
 
     /**
@@ -21,7 +23,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('department.create');
     }
 
     /**
@@ -29,7 +31,12 @@ class DepartmentController extends Controller
      */
     public function store(StoreDepartmentRequest $request)
     {
-        //
+        Department::create([
+            'name'=>$request->name,
+            'description'=>$request->description,
+        ]);
+        toastr()->success('Added Successfully');
+        return redirect(route('departments.index'));
     }
 
     /**
@@ -45,7 +52,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return view('department.edit',compact('department'));
     }
 
     /**
@@ -53,7 +60,12 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        //
+        $department->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+        ]);
+        toastr()->success('Updated Successfully');
+        return redirect(route('departments.index'));
     }
 
     /**
@@ -61,6 +73,9 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+
+        $department->delete();
+        toastr()->success("Deleted Successfully");
+        return redirect(route('departments.index'));
     }
 }

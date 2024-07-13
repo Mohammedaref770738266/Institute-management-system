@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Models\Teacher;
@@ -26,3 +27,7 @@ Route::resource('books',BookController::class);
 Route::resource('students',StudentController::class);
 
 Route::resource('teachers',TeacherController::class);
+
+Route::resource('departments',DepartmentController::class);
+
+Route::resource('books',BookController::class);

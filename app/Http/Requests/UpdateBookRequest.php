@@ -11,7 +11,7 @@ class UpdateBookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>'required|unique:books,name,'.$this->book->id,
+            'type'=>'required',
+            'price'=>'required|numeric',
         ];
     }
 }
