@@ -42,7 +42,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror()
                     <div class="">
-                        <label for="type">Gender:</label>
+                        <label for="type">Type:</label>
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="radio"
@@ -62,11 +62,13 @@
                             </label>
                         </div>
                     </div>
-                    <br>
-                    <br>
-                    <br>
+                        <br>
+                        <br>
+                        <br>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
+
         </div>
     </div>
 @endsection

@@ -13,7 +13,8 @@ class PeriodController extends Controller
      */
     public function index()
     {
-        //
+        $periods = Period::paginate(25);
+        return view('period.index',compact('periods'));
     }
 
     /**
@@ -21,7 +22,8 @@ class PeriodController extends Controller
      */
     public function create()
     {
-        //
+        return view('period.create');
+
     }
 
     /**
@@ -29,7 +31,12 @@ class PeriodController extends Controller
      */
     public function store(StorePeriodRequest $request)
     {
-        //
+        Period::create([
+            'strating_time'=>$request->strating_time,
+            'finishing_time'=>$request->finishing_time,
+        ]);
+        toastr()->success("Added successfully");
+        return redirect(route('periods.index'));
     }
 
     /**
@@ -45,7 +52,8 @@ class PeriodController extends Controller
      */
     public function edit(Period $period)
     {
-        //
+        return view('period.edit',compact('period'));
+
     }
 
     /**
@@ -53,7 +61,12 @@ class PeriodController extends Controller
      */
     public function update(UpdatePeriodRequest $request, Period $period)
     {
-        //
+        $period->update([
+            'strating_time'=>$request->strating_time,
+            'finishing_time'=>$request->finishing_time,
+        ]);
+        toastr()->success("Updated successfully");
+        return redirect(route('periods.index'));
     }
 
     /**
@@ -61,6 +74,8 @@ class PeriodController extends Controller
      */
     public function destroy(Period $period)
     {
-        //
+        $period->delete();
+        toastr()->success("Deleted Successfully");
+        return redirect(route('periods.index'));
     }
 }

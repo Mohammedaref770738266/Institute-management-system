@@ -35,6 +35,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror()
                     <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
         </div>
     </div>

@@ -11,7 +11,7 @@ class UpdateTermRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateTermRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'starting_date'=>'required|unique:terms,starting_date,'.$this->term->id,
+            'finishing_date'=>'required|unique:terms,finishing_date,'.$this->term->id,
         ];
     }
 }

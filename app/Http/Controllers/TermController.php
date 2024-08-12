@@ -13,7 +13,8 @@ class TermController extends Controller
      */
     public function index()
     {
-        //
+        $terms = Term::paginate(25);
+        return view('term.index',compact('terms'));
     }
 
     /**
@@ -21,7 +22,8 @@ class TermController extends Controller
      */
     public function create()
     {
-        //
+        return view('term.create');
+
     }
 
     /**
@@ -29,7 +31,12 @@ class TermController extends Controller
      */
     public function store(StoreTermRequest $request)
     {
-        //
+        Term::create([
+            'starting_date'=>$request->starting_date,
+            'finishing_date'=>$request->finishing_date,
+        ]);
+        toastr()->success("Added successfully");
+        return redirect(route('terms.index'));
     }
 
     /**
@@ -45,7 +52,8 @@ class TermController extends Controller
      */
     public function edit(Term $term)
     {
-        //
+        return view('term.edit',compact('term'));
+
     }
 
     /**
@@ -53,7 +61,11 @@ class TermController extends Controller
      */
     public function update(UpdateTermRequest $request, Term $term)
     {
-        //
+        $term->update([
+            'starting_date'=>$request->starting_date,
+            'finishing_date'=>$request->finishing_date,
+            'finished'=>$request->finished
+        ]);
     }
 
     /**
@@ -61,6 +73,8 @@ class TermController extends Controller
      */
     public function destroy(Term $term)
     {
-        //
+        $term->delete();
+        toastr()->success("Deleted Successfully");
+        return redirect(route('terms.index'));
     }
 }

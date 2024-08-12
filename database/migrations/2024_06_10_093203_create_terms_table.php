@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('starting_date')->unique();
             $table->date('finishing_date')->unique();
+            $table->boolean('finished')->default(0);
             $table->timestamps();
         });
     }

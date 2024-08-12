@@ -2,33 +2,35 @@
 @extends('layout')
 @section('content')
     <div class="container-fluid">
-        <h2 class = "ml-1">Books List</h2>
-        <a href="{{route('books.create')}}"  class="btn btn-primary mb-3 float-right">Create</a>
+        <h2 class = "ml-1">Courses List</h2>
+        <a href="{{route('courses.create')}}"  class="btn btn-primary mb-3 float-right">Create</a>
 
         <table class="ml-1 table table-striped">
             <thead>
             <tr>
+                <th>Order</th>
                 <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Price</th>
+                <th>Department</th>
+                <th>Book</th>
+                <th>Story</th>
                 <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($books as $book)
+            @foreach($courses as $course)
                 <tr>
-                    <td>{{$book->name}}</td>
-                    <td>{{$book->type}}</td>
-                    <td>{{$book->description}}</td>
-                    <td>{{$book->price}}</td>
+                    <td>{{$course->order}}</td>
+                    <td>{{$course->name}}</td>
+                    <td>{{$course->department->name}}</td>
+                    <td>{{$course->book->name}}</td>
+                    <td>{{$course->story->name}}</td>
                     <td style="width: 190px;">
-                        <a href="{{route('books.edit',$book)}}">
+                        <a href="{{route('courses.edit',$course)}}">
 							<span class="btn  btn-outline-success btn-sm font-1 mx-1">
 								<span class="fas fa-wrench "></span> Edit
 							</span>
                         </a>
-                        <form method="POST" action="{{route('books.destroy',$book)}}"
+                        <form method="POST" action="{{route('courses.destroy',$course)}}"
                               class="d-inline-block">
                             @csrf
                             @method("DELETE")
@@ -44,6 +46,6 @@
             @endforeach
             </tbody>
         </table>
-        {!! $books->render() !!}
+        {!! $courses->render() !!}
     </div>
 @endsection

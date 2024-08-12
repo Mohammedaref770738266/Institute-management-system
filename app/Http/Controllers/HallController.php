@@ -13,7 +13,8 @@ class HallController extends Controller
      */
     public function index()
     {
-        //
+        $halls = Hall::paginate(25);
+        return view('hall.index',compact('halls'));
     }
 
     /**
@@ -21,7 +22,8 @@ class HallController extends Controller
      */
     public function create()
     {
-        //
+        return view('hall.create');
+
     }
 
     /**
@@ -29,7 +31,12 @@ class HallController extends Controller
      */
     public function store(StoreHallRequest $request)
     {
-        //
+        Hall::create([
+           'number'=>$request->number,
+           'floor'=>$request->floor,
+        ]);
+        toastr()->success("Added successfully");
+        return redirect(route('halls.index'));
     }
 
     /**
@@ -45,7 +52,7 @@ class HallController extends Controller
      */
     public function edit(Hall $hall)
     {
-        //
+        return view('hall.edit',compact('hall'));
     }
 
     /**
@@ -53,7 +60,12 @@ class HallController extends Controller
      */
     public function update(UpdateHallRequest $request, Hall $hall)
     {
-        //
+        $hall->update([
+            'number'=>$request->number,
+            'floor'=>$request->floor,
+        ]);
+        toastr()->success("Updated successfully");
+        return redirect(route('halls.index'));
     }
 
     /**
@@ -61,6 +73,8 @@ class HallController extends Controller
      */
     public function destroy(Hall $hall)
     {
-        //
+        $hall->delete();
+        toastr()->success("Deleted Successfully");
+        return redirect(route('halls.index'));
     }
 }

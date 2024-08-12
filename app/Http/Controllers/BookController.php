@@ -67,7 +67,7 @@ class BookController extends Controller
             'description'=>$request->description,
             'type'=>$request->type,
         ]);
-        toastr()->success('Added Successfully');
+        toastr()->success('Updated Successfully');
         return redirect(route('books.index'));
     }
 

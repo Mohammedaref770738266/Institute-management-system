@@ -85,10 +85,11 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="{{route('books.index')}}">Books</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                    <a class="collapse-item" href="{{route('terms.index')}}">Terms</a>
+                    <a class="collapse-item" href="{{route('halls.index')}}">Hall</a>
+                    <a class="collapse-item" href="{{route('periods.index')}}">Period</a>
+                    <a class="collapse-item" href="{{route('courses.index')}}">Course</a>
+                    <a class="collapse-item" href="{{route('term_courses.index')}}">Term Course</a>
                 </div>
             </div>
         </li>
@@ -412,7 +413,7 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>

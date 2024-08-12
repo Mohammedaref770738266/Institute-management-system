@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePeriodRequest extends FormRequest
+class Updateterm_CourseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,13 @@ class UpdatePeriodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'strating_time'=>'required|unique:periods,strating_time,'.$this->period->id,
-            'finishing_time'=>'required|unique:periods,finishing_time,'.$this->period->id,
+            'term_id'=>'required',
+            'course_id'=>'required',
+            'teacher_id'=>'required',
+            'hall_id'=>'required',
+            'period_id'=>'required',
+            'price'=>'required|numeric',
+            'minimum_num'=>'required|numeric',
         ];
     }
 }

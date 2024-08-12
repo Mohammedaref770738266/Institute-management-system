@@ -11,4 +11,9 @@ class Teacher extends Model
 
     protected $guarded = [];
 
+    public function term_course()
+    {
+        return $this->hasMany(term_Course::class);
+    }
+
 }

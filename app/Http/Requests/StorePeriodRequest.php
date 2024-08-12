@@ -11,7 +11,7 @@ class StorePeriodRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StorePeriodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'strating_time'=>'required|unique:periods,strating_time',
+            'finishing_time'=>'required|unique:periods,finishing_time',
         ];
     }
 }

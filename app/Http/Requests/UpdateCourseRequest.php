@@ -11,7 +11,7 @@ class UpdateCourseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>'required|unique:courses,name,'.$this->course->id,
+            'book_id'=>'required',
+            'story_id'=>'required',
+            'department_id'=>'required',
+            'price'=>'required|numeric',
         ];
     }
 }

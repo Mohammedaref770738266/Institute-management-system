@@ -11,7 +11,7 @@ class StoreHallRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreHallRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'number'=>'required|unique:halls,number|numeric',
+            'floor'=>'required|numeric',
         ];
     }
 }

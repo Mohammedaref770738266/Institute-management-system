@@ -2,33 +2,31 @@
 @extends('layout')
 @section('content')
     <div class="container-fluid">
-        <h2 class = "ml-1">Books List</h2>
-        <a href="{{route('books.create')}}"  class="btn btn-primary mb-3 float-right">Create</a>
+        <h2 class = "ml-1">terms List</h2>
+        <a href="{{route('terms.create')}}"  class="btn btn-primary mb-3 float-right">Create</a>
 
         <table class="ml-1 table table-striped">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Price</th>
+                <th>Number</th>
+                <th>Starting Date</th>
+                <th>Finishing Date</th>
                 <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($books as $book)
+            @foreach($terms as $term)
                 <tr>
-                    <td>{{$book->name}}</td>
-                    <td>{{$book->type}}</td>
-                    <td>{{$book->description}}</td>
-                    <td>{{$book->price}}</td>
+                    <td>{{$term->id}}</td>
+                    <td>{{$term->starting_date}}</td>
+                    <td>{{$term->finishing_date}}</td>
                     <td style="width: 190px;">
-                        <a href="{{route('books.edit',$book)}}">
+                        <a href="{{route('terms.edit',$term)}}">
 							<span class="btn  btn-outline-success btn-sm font-1 mx-1">
 								<span class="fas fa-wrench "></span> Edit
 							</span>
                         </a>
-                        <form method="POST" action="{{route('books.destroy',$book)}}"
+                        <form method="POST" action="{{route('terms.destroy',$term)}}"
                               class="d-inline-block">
                             @csrf
                             @method("DELETE")
@@ -44,6 +42,6 @@
             @endforeach
             </tbody>
         </table>
-        {!! $books->render() !!}
+        {!! $terms->render() !!}
     </div>
 @endsection

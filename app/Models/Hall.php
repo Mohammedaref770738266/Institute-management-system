@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Hall extends Model
 {
     use HasFactory;
+
+    protected $guarded =[''];
+
+    public function term_course()
+    {
+        return $this->hasMany(term_Course::class);
+    }
 }
