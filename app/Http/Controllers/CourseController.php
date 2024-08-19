@@ -78,7 +78,6 @@ class CourseController extends Controller
         $departments= Department::all();
         $books= Book::all();
         return view('course.edit',compact(['course','departments','books']));
-
     }
 
     /**

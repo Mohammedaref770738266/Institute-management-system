@@ -14,8 +14,6 @@ class Term extends Model
 
     public function courses(): BelongsToMany
     {
-        return $this->belongsToMany(Course::class,'term_course')
-            ->using(TermCourse::class)
-            ->withPivot('price','minimum_num','maxmum_num');
+        return $this->belongsToMany(Course::class,'term_course');
     }
 }

@@ -3,64 +3,53 @@
 @section('content')
     <div class="container-fluid">
         <div class="mx-3">
-            <form method="post" action="{{route('courses.store')}}" class="">
+            <form method="post" action="{{route('term_courses.store')}}" class="">
                 @csrf
                 <h2>course Information</h2>
                 <div class="mt-4 row">
-                    <div class="form-group col-lg-3 col-md-4" style="width: 35%">
-                        <label for="name">Name:</label>
-                        <input
-                            type="text"
-                            class="form-control @error('name') is-invalid @enderror"
-                            id="name"
-                            value="{{old('name')}}"
-                            name="name" >
-                    </div>
                     <div class="form-group col-lg-3 col-md-4">
-                        <label for="sel1">Department list:</label>
-                        <select class="form-control" name="department_id" id="department_id">
+                        <label for="course_id">Course List:</label>
+                        <select class="form-control" name="course_id" id="course_id">
                             <option>
                                 Select
                             </option>
-                            @foreach($departments as $department)
-                                <option value="{{$department->id}}">{{$department->name}}</option>
+                            @foreach($courses as $course)
+                                <option  value="{{$course->id}}">{{$course->name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col-lg-3 col-md-4">
-                        <label for="sel1">Book list:</label>
-                        <select class="form-control" name="book_id" id="book_id">
+                        <label for="teacher_id">Teachers list:</label>
+                        <select class="form-control" name="teacher_id" id="teacher_id">
                             <option>
                                 Select
                             </option>
-                            @foreach($books as $book)
-                                @if($book->type == 'book')
-                                    <option value="{{$book->id}}">{{$book->name}}</option>
-                                @endif
+                            @foreach($teachers as $teacher)
+                                <option value="{{$teacher->id}}">{{$teacher->full_name_ar}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col-lg-3 col-md-4">
-                        <label for="sel1">Story list:</label>
-                        <select class="form-control" name="story_id" id="story_id">
+                        <label for="period_id">Periods list:</label>
+                        <select class="form-control" name="period_id" id="period_id">
+                            <option>
+                                Select
+                            </option>
+                            @foreach($periods as $period)
+                                    <option value="{{$period->id}}">{{$period->strating_time}} - {{$period->finishing_time}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4">
+                        <label for="hall_id">Halls list:</label>
+                        <select class="form-control" name="hall_id" id="hall_id">
                             <option>
                                 Select
                               </option>
-                            @foreach($books as $book)
-                                @if($book->type == 'story')
-                                    <option value="{{$book->id}}">{{$book->name}}</option>
-                                @endif
+                            @foreach($halls as $hall)
+                                    <option value="{{$hall->id}}">{{$hall->number}} - {{$hall->floor}}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="form-group col-lg-3 col-md-4" style="width: 35%">
-                        <label for="description">Description:</label>
-                        <input
-                            type="text"
-                            class="form-control @error('description') is-invalid @enderror"
-                            id="description"
-                            value="{{old('description')}}"
-                            name="description" >
                     </div>
                     <div class="form-group col-lg-3 col-md-4" style="width: 35%">
                         <label for="price">Price:</label>
@@ -71,6 +60,25 @@
                             value="{{old('price')}}"
                             name="price" >
                     </div>
+                    <div class="form-group col-lg-3 col-md-4" style="width: 35%">
+                        <label for="description">Maximum Number of Student:</label>
+                        <input
+                            type="text"
+                            class="form-control @error('maxmum_num') is-invalid @enderror"
+                            id="maxmum_num"
+                            value="{{old('maxmum_num')}}"
+                            name="maxmum_num" >
+                    </div>
+                    <div class="form-group col-lg-3 col-md-4" style="width: 35%">
+                        <label for="minimum_num">Minimum Number of Student:</label>
+                        <input
+                            type="text"
+                            class="form-control @error('minimum_num') is-invalid @enderror"
+                            id="minimum_num"
+                            value="{{old('minimum_num')}}"
+                            name="minimum_num" >
+                    </div>
+
                     <br>
                     <br>
                     <br>

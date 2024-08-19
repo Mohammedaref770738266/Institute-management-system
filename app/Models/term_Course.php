@@ -9,6 +9,8 @@ class term_Course extends Model
 {
     use HasFactory;
 
+    protected $guarded = [''];
+
     public function teacher()
     {
         return $this->belongsTo(Teacher::class);
@@ -21,14 +23,14 @@ class term_Course extends Model
     {
         return $this->belongsTo(Period::class);
     }
-    public function term()
-    {
-        return $this->belongsTo(Term::class);
-    }
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
+//    public function term()
+//    {
+//        return $this->belongsTo(Term::class);
+//    }
+//    public function course()
+//    {
+//        return $this->belongsTo(Course::class);
+//    }
 
 }
 

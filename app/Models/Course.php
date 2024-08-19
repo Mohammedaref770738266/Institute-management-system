@@ -22,12 +22,10 @@ class Course extends Model
     {
         return $this->belongsTo(Book::class,'story_id');
     }
-//    public function terms(): BelongsToMany
-//    {
-//        return $this->belongsToMany(Term::class,'term_course')
-//            ->using(TermCourse::class)
-//            ->withPivot('price','minimum_num','maxmum_num');
-//    }
+    public function terms(): BelongsToMany
+    {
+        return $this->belongsToMany(Term::class,'term_course');
+    }
     public function course()
     {
         return $this->hasMany(Course::class);

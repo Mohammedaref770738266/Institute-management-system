@@ -22,23 +22,25 @@
             </thead>
             <tbody>
 {{--            {{$combinedArray = array_combine($term_courses, $data)}}--}}
-            @foreach($term_courses as $term_course)
+            @foreach($term_courses as $term_Course)
                 <tr>
-                    <td>{{$term_course->term->id}}</td>
-{{--                    @foreach($term->courses as $course)--}}
-                        <td>{{$term_course->course->name}}</td>
-{{--                    @endforeach--}}
-                    <td>{{$term_course->teacher->full_name_ar}}</td>
-                    <td>{{$term_course->hall->number}} - {{$term_course->hall->floor}}</td>
-                    <td>{{$term_course->period->strating_time}}</td>
-                    <td>{{$term_course->price}}</td>
+                    <td>{{$term_Course->term_id}}</td>
+                    @foreach($courses as $course)
+                        @if($course->id == $term_Course->course_id)
+                            <td>{{$course->name}}</td>
+                        @endif
+                    @endforeach
+                    <td>{{$term_Course->teacher->full_name_ar}}</td>
+                    <td>{{$term_Course->hall->number}} - {{$term_Course->hall->floor}}</td>
+                    <td>{{$term_Course->period->strating_time}}</td>
+                    <td>{{$term_Course->price}}</td>
                     <td style="width: 190px;">
-                        <a href="{{route('term_courses.edit',$term_course)}}">
+                        <a href="{{route('term_courses.edit',$term_Course)}}">
 							<span class="btn  btn-outline-success btn-sm font-1 mx-1">
 								<span class="fas fa-wrench "></span> Edit
 							</span>
                         </a>
-                        <form method="POST" action="{{route('term_courses.destroy',$term_course)}}"
+                        <form method="POST" action="{{route('term_courses.destroy',$term_Course)}}"
                               class="d-inline-block">
                             @csrf
                             @method("DELETE")
@@ -48,12 +50,11 @@
                                 <span class="fas fa-trash "></span> Delete
                             </button>
                         </form>
-
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-{{--        {!! $term->render() !!}--}}
+        {!! $term_courses->render() !!}
     </div>
 @endsection

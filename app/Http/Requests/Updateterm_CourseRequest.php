@@ -22,7 +22,7 @@ class Updateterm_CourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'term_id'=>'required',
+//            'term_id'=>'required',
             'course_id'=>'required',
             'teacher_id'=>'required',
             'hall_id'=>'required',
