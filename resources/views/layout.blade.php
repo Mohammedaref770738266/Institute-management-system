@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{__("code")}}">
 
 <head>
 
@@ -20,9 +20,12 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    @if(__('code')=='ar')
+        <link href="{{asset('css/sb-admin-2-rtl.css')}}" rel="stylesheet">
+    @endif
 </head>
 
-<body id="page-top">
+<body id="page-top" dir="{{__("dir")}}">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -43,7 +46,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('dashboard')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -66,7 +69,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="{{route('students.index')}}">Student</a>
+                    <a class="collapse-item" href="{{route('students.index')}}">{{__('Students')}}</a>
                     <a class="collapse-item" href="{{route('teachers.index')}}">Teacher</a>
                     <a class="collapse-item" href="{{route('departments.index')}}">Department</a>
                     <a class="collapse-item" href="{{route('books.index')}}">Book</a>
@@ -329,11 +332,36 @@
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-globe fa-fw"></i>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">  {{__("Lang")}}</span>
+
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{route('changeLang','ar')}}">
+                                <i class="fas fa-globe fa-sm fa-fw mr-2 text-gray-400"></i>
+                                {{__("Arabic")}}
+                            </a>
+
+                            <a class="dropdown-item" href="{{route('changeLang','en')}}">
+                                <i class="fas fa-globe fa-sm fa-fw mr-2 text-gray-400"></i>
+
+                                {{__("English")}}
+                            </a>
+
+
+                        </div>
+                    </li>
+
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
                             <img class="img-profile rounded-circle"
                                  src="{{asset('img/undraw_profile.svg')}}">
                         </a>
@@ -353,10 +381,15 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                            <a class="dropdown-item"
+                               onclick="event.preventDefault();
+                                                this.closest('form').submit();">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
+                            </form>
                         </div>
                     </li>
 

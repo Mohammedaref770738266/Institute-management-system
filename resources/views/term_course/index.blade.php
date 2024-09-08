@@ -35,12 +35,12 @@
                     <td>{{$term_Course->period->strating_time}}</td>
                     <td>{{$term_Course->price}}</td>
                     <td style="width: 190px;">
-                        <a href="{{route('term_courses.edit',$term_Course)}}">
+                        <a href="{{route('term_courses.edit',$term_Course->id)}}">
 							<span class="btn  btn-outline-success btn-sm font-1 mx-1">
 								<span class="fas fa-wrench "></span> Edit
 							</span>
                         </a>
-                        <form method="POST" action="{{route('term_courses.destroy',$term_Course)}}"
+                        <form method="POST" action="{{route('term_courses.destroy',$term_Course->id)}}"
                               class="d-inline-block">
                             @csrf
                             @method("DELETE")

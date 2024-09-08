@@ -29,6 +29,7 @@ class Updateterm_CourseRequest extends FormRequest
             'period_id'=>'required',
             'price'=>'required|numeric',
             'minimum_num'=>'required|numeric',
+            'maxmum_num'=>'required|numeric',
         ];
     }
 }

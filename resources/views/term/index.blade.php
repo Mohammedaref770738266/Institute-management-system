@@ -20,6 +20,7 @@
                     <td>{{$term->id}}</td>
                     <td>{{$term->starting_date}}</td>
                     <td>{{$term->finishing_date}}</td>
+
                     <td style="width: 190px;">
                         <a href="{{route('terms.edit',$term)}}">
 							<span class="btn  btn-outline-success btn-sm font-1 mx-1">

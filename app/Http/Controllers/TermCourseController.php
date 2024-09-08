@@ -74,15 +74,18 @@ class TermCourseController extends Controller
      */
     public function edit(term_Course $term_Course)
     {
-//        $url = (string)URL::current();
-//        $url = preg_split('/\//',$url);
-//        $url = (int)array_slice($url, -2, 1)[0];
-//        $term_Course = db::table('term__courses')->get()->where('id', $url);
+        $url = (string)URL::current();
+        $url = preg_split('/\//',$url);
+        $url = (int)array_slice($url, -2, 1)[0];
+        $term_Course = db::table('term__courses')->get()->where('id', $url)->first();
 //        return dd($term_Course);
+//        $term_Course= $term_Course[0];
         $courses= Course::all();
         $teachers= Teacher::all();
         $halls= Hall::all();
         $periods= Period::all();
+//        return dd($term_Course);
+
         return view('term_course.edit',compact(['term_Course','courses','teachers','halls','periods']));
     }
 
@@ -91,14 +94,20 @@ class TermCourseController extends Controller
      */
     public function update(Updateterm_CourseRequest $request, term_Course $term_Course)
     {
-        $term_Course->update([
-//            'course_id'=>$request->course_id,
-//            'teacher_id'=>$request->teacher_id,
-//            'period_id'=>$request->period_id,
-//            'hall_id'=>$request->hall_id,
-//            'price'=>$request->price,
-//            'maxmum_num'=>$request->maxmum_num,
-//            'minimum_num'=>$request->minimum_num,
+        $url = (string)URL::current();
+        $url = preg_split('/\//',$url);
+        $url = (int)array_slice($url, -1, 1)[0];
+        $term_Course = db::table('term__courses')->get()->where('id', $url)->first();
+
+        DB::table('term__courses')
+            ->where('id', $term_Course->id)->update([
+            'course_id'=>$request->course_id,
+            'teacher_id'=>$request->teacher_id,
+            'period_id'=>$request->period_id,
+            'hall_id'=>$request->hall_id,
+            'price'=>$request->price,
+            'maxmum_num'=>$request->maxmum_num,
+            'minimum_num'=>$request->minimum_num,
         ]);
         toastr()->success('Updated Successfully');
         return redirect(route('term_courses.index'));
@@ -109,7 +118,12 @@ class TermCourseController extends Controller
      */
     public function destroy(term_Course $term_Course)
     {
-        $term_Course->delete();
+        $url = (string)URL::current();
+        $url = preg_split('/\//',$url);
+        $url = (int)array_slice($url, -1, 1)[0];
+        $term_Course = db::table('term__courses')->get()->where('id', $url)->first();
+        DB::table('term__courses')
+            ->where('id', $term_Course->id)->delete();
         toastr()->success("Deleted Successfully");
         return redirect(route('term_courses.index'));
     }

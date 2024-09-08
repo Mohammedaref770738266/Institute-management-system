@@ -1,4 +1,7 @@
 {
+    "code":"ar",
+    "dir":"rtl",
+    "Students":"الطلاب",
     "(and :count more error)": "(و :count خطأ إضافي)",
     "(and :count more errors)": "(و :count أخطاء إضافية)",
     "A Timeout Occurred": "انتهت المهلة",
